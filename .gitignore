@@ -1,0 +1,9 @@
+*.logs
+prediction_logs.json
+
+.venv/
+.vscode/
+__pycache__/
+.DS_Store
+.pytest_cache/
+output_models/
