@@ -5,7 +5,7 @@
 This project implements a machine learning solution to predict whether users will complete their tax filing based on their activity patterns, demographics, and platform engagement. The system is built as a production-ready API service with capabilities for real-time predictions and model retraining.
 
 ### Features
-- Real-time prediction API endpoint
+- Real-time prediction API endpoint (with Asynchronous processing)
 - Model retraining capability
 - Comprehensive logging system
 - Docker support
@@ -21,6 +21,7 @@ This project implements a machine learning solution to predict whether users wil
 - Pytest for testing
 
 ## Project Structure
+```
 ├── controllers/*  # API endpoints
 ├── data/*  # Dataset files. 
 ├── logs/*  # logs of the app
@@ -33,11 +34,11 @@ This project implements a machine learning solution to predict whether users wil
 ├── ingestion.py # Data ingestion/input and preprocessing
 ├── test_case.py # Test cases for the API
 ├── train.py # Model training script
-
+```
 
 ## Installation & Setup
 
-### Local Setup
+### Setup
 1. Create and activate a virtual environment:
 ```bash
 python -m venv .venv
@@ -78,6 +79,12 @@ or send a GET request to http://localhost:8000/health from postman
 ### Health Check
 - **URL**: `http://127.0.0.1:8000/health`
 - **Method**: GET
+- **Sample Response**:
+```json
+{
+    "status": "ok"
+}
+```
 
 
 ### Retraining
@@ -89,6 +96,13 @@ or send a GET request to http://localhost:8000/health from postman
   "data_path": "/app/data/dataset.csv"
 }
 ```
+- **Sample Response**:
+```json
+{
+    "status": "Model retrained successfully."
+}
+```
+
 
 ### Prediction
 - **URL**: `http://127.0.0.1:8000/predict`
@@ -106,6 +120,13 @@ or send a GET request to http://localhost:8000/health from postman
     "previous_year_filing": 0,
     "device_type": "desktop",
     "referral_source": "organic_search"
+}
+```
+- **Sample Response**:
+```json
+{
+    "prediction": 1,
+    "probability": 1.0
 }
 ```
 
