@@ -1,0 +1,40 @@
+2025-01-26 13:05:50 - INFO - Model and preprocessor loaded successfully.
+2025-01-26 13:05:52 - INFO - Received data for prediction: age=12 income=75000.5 employment_type='full_time' marital_status='married' time_spent_on_platform=210.5 number_of_sessions=22 fields_filled_percentage=95.2 previous_year_filing=0 device_type='desktop' referral_source='organic_search'
+2025-01-26 13:05:52 - INFO - Data received for prediction. Making prediction...
+2025-01-26 13:05:52 - INFO - Prediction: 1, Probability: 1.0
+2025-01-26 13:05:52 - INFO - Prediction took: 0.02989506721496582 seconds
+2025-01-26 13:05:53 - INFO - Received data for prediction: age=12 income=75000.5 employment_type='full_time' marital_status='married' time_spent_on_platform=210.5 number_of_sessions=22 fields_filled_percentage=95.2 previous_year_filing=0 device_type='desktop' referral_source='organic_search'
+2025-01-26 13:05:53 - INFO - Data received for prediction. Making prediction...
+2025-01-26 13:05:53 - INFO - Prediction: 1, Probability: 1.0
+2025-01-26 13:05:53 - INFO - Prediction took: 0.01668405532836914 seconds
+2025-01-26 13:05:55 - INFO - Retraining : Retraining model...
+2025-01-26 13:05:55 - INFO - Retraining : Data path: /Users/umer/Desktop/a .nosync/taxfix/taxfix_dropoff_prediction/data/testing_not_regular/dataset.csv
+2025-01-26 13:05:55 - INFO - Retraining : Data ingestion class initialized
+2025-01-26 13:05:55 - INFO - Retraining : Data read successfully
+2025-01-26 13:05:55 - INFO - Retraining: Ingestion : Preprocessor initialized
+2025-01-26 13:05:55 - INFO - Retraining: Ingestion : Validation size: 1000
+2025-01-26 13:05:55 - INFO - Retraining: Ingestion : Inference size: 250
+2025-01-26 13:05:55 - INFO - Retraining: Ingestion : Data preprocessed successfully
+2025-01-26 13:05:55 - INFO - Retraining : Data preprocessed successfully
+2025-01-26 13:05:55 - INFO - Training the model : Start
+2025-01-26 13:05:55 - INFO - Model trained successfully
+2025-01-26 13:05:55 - INFO - Classification report:               precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       105
+           1       0.89      1.00      0.94       845
+
+    accuracy                           0.89       950
+   macro avg       0.44      0.50      0.47       950
+weighted avg       0.79      0.89      0.84       950
+
+2025-01-26 13:05:55 - INFO - Retraining : Model trained successfully
+2025-01-26 13:05:55 - INFO - Saving Model : Model already exists
+2025-01-26 13:05:55 - INFO - Saving Model : Old model path: output_models/model.pkl
+2025-01-26 13:05:55 - INFO - Saving Model : base path is: output_models
+2025-01-26 13:05:55 - INFO - Saving Model : Old model path: output_models/old_model.pkl
+2025-01-26 13:05:55 - INFO - Saving Model : Old model renamed to *_old.pkl
+2025-01-26 13:05:55 - INFO - Saving Model : Model saved to output_models/model.pkl
+2025-01-26 13:05:55 - INFO - Saving Model : Preprocessor saved to output_models/preprocessor.pkl
+2025-01-26 13:05:55 - INFO - Retraining : Model saved successfully
+2025-01-26 13:05:55 - INFO - Retraining : Model retrained successfully.
+2025-01-26 13:05:55 - INFO - Retraining : Retraining took: 0.10852503776550293 seconds
