@@ -32,16 +32,16 @@ jobs:
           exit 1
         fi
 
-    - name: Train model via API
-      run: |
-        curl -X POST http://localhost:8000/retrain \
-          -H "Content-Type: application/json" \
-          -d '{
-            "data_path":"/app/data/dataset.csv"
-          }'
+    # - name: Train model via API
+    #   run: |
+    #     curl -X POST http://localhost:8000/retrain \
+    #       -H "Content-Type: application/json" \
+    #       -d '{
+    #         "data_path":"/app/data/dataset.csv"
+    #       }'
         
-        # Wait for training to complete
-        sleep 15
+    #     # Wait for training to complete
+    #     sleep 15
         
     - name: Run tests in container
       run: |

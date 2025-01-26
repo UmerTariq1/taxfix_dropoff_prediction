@@ -6,4 +6,4 @@ prediction_logs.json
 __pycache__/
 .DS_Store
 .pytest_cache/
-output_models/
+# output_models/
