@@ -3,7 +3,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.model_selection import train_test_split
-from custom_logger import app_logger as logger
+from utils.custom_logger import app_logger as logger
 
 class DataIngestion:
     def __init__(self, file_path=None):

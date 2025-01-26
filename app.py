@@ -5,7 +5,7 @@ from controllers import prediction_controller
 import joblib
 import os
 from services.prediction_service import load_model_and_preprocessor
-from custom_logger import app_logger as logger
+from utils.custom_logger import app_logger as logger
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

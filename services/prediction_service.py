@@ -4,7 +4,7 @@ import pandas as pd
 from ingestion import DataIngestion
 import os, asyncio
 from train import train_model, save_model
-from custom_logger import app_logger as logger
+from utils.custom_logger import app_logger as logger
 
 model, preprocessor = None, None
 
