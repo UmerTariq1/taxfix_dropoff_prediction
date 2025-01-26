@@ -31,17 +31,6 @@ jobs:
           echo "API health check failed"
           exit 1
         fi
-
-    # - name: Train model via API
-    #   run: |
-    #     curl -X POST http://localhost:8000/retrain \
-    #       -H "Content-Type: application/json" \
-    #       -d '{
-    #         "data_path":"/app/data/dataset.csv"
-    #       }'
-        
-    #     # Wait for training to complete
-    #     sleep 15
         
     - name: Run tests in container
       run: |
@@ -49,7 +38,6 @@ jobs:
         
     - name: Test prediction endpoint
       run: |
-        # Add a test prediction request here
         curl -X POST http://localhost:8000/predict \
           -H "Content-Type: application/json" \
           -d '{
@@ -64,6 +52,31 @@ jobs:
               "device_type": "desktop",
               "referral_source": "organic_search"
           }'
-        
+
+    - name: Test retrain endpoint
+      run: |
+        curl -X POST http://localhost:8000/retrain \
+          -H "Content-Type: application/json" \
+          -d '{
+              "data_path": "/app/data/dataset.csv"
+          }'
+
+    - name: Test prediction endpoint
+      run: |
+        curl -X POST http://localhost:8000/predict \
+          -H "Content-Type: application/json" \
+          -d '{
+              "age": 12,
+              "income": 75000.5,
+              "employment_type": "full_time",
+              "marital_status": "married",
+              "time_spent_on_platform": 210.5,
+              "number_of_sessions": 22,
+              "fields_filled_percentage": 95.2,
+              "previous_year_filing": 0,
+              "device_type": "desktop",
+              "referral_source": "organic_search"
+          }'
+                      
     - name: Cleanup
       run: docker stop tax-api
