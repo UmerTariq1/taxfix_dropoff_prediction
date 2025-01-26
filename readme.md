@@ -4,13 +4,20 @@
 ## Project Overview
 This project implements a machine learning solution to predict whether users will complete their tax filing based on their activity patterns, demographics, and platform engagement. The system is built as a production-ready API service with capabilities for real-time predictions and model retraining.
 
+You can test the API endpoints at:
+- Prediction: https://tax-prediction-api.onrender.com/predict
+- Retraining: https://tax-prediction-api.onrender.com/retrain
+- Health Check: https://tax-prediction-api.onrender.com/health
+
 ### Features
 - Real-time prediction API endpoint (with Asynchronous processing)
 - Model retraining capability
 - Comprehensive logging system
-- Docker support
 - CI/CD pipeline with GitHub Actions
 - Automated testing suite
+- Dockerized application
+- Docker image hosted on Docker Hub
+- Docker container hosted on render (accessable at : https://tax-prediction-api.onrender.com/) 
 
 ## Technical Stack
 - FastAPI for API development
@@ -55,7 +62,7 @@ pip install -r requirements.txt
 uvicorn app:app --host 0.0.0.0 --port 8000
 ```
 
-3b. Run the application on local with docker:
+3b. Run the application on local with docker (docker should be installed):
 ```bash
 docker build -t tax-prediction-api .
 docker run -d -p 8000:8000 --name test-container tax-prediction-api
@@ -197,3 +204,19 @@ docker exec -it test-container bash
 cat /app/prediction_logs.json
 cat /app/logs.log
 ```
+
+
+### Docker Image and Container for Render:
+Since this application was developed on m1 machine, the docker architecture by default is arm64. 
+But if you want to push the image to docker hub and run it on render, you need to build the image on x86_64 architecture.
+```bash
+docker build --platform linux/amd64 -t umertariq01/tax-prediction-api:v1 .
+docker inspect umertariq01/tax-prediction-api:v1 | grep Architecture
+docker tag umertariq01/tax-prediction-api:v1 umertariq01/tax-prediction-api:v1
+docker push umertariq01/tax-prediction-api:v1
+```
+This creates and uploades the docker image on docker hub. 
+Now you can use this image to create a container on render.
+That container can be accessed at: 
+
+https://tax-prediction-api.onrender.com/
