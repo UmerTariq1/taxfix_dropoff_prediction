@@ -30,3 +30,4 @@ weighted avg       0.79      0.89      0.84       950
 2025-01-26 03:56:35 - INFO - Retraining : Model saved successfully
 2025-01-26 03:56:35 - INFO - Retraining : Model retrained successfully.
 2025-01-26 03:56:35 - INFO - Retraining : Retraining took: 0.12197184562683105 seconds
+2025-01-26 11:52:28 - INFO - Model and preprocessor loaded successfully.

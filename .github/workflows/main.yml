@@ -20,8 +20,29 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         
+    - name: Train model
+      run: python train.py
+        
     - name: Run tests
       run: pytest -v
 
     - name: Build Docker image
       run: docker build -t tax-prediction-api .
+      
+    - name: Run Docker container
+      run: |
+        docker run -d -p 8000:8000 --name tax-api tax-prediction-api
+        sleep 10  # Wait for container to start
+        
+    - name: Test API health endpoint
+      run: |
+        response=$(curl -s http://localhost:8000/health)
+        if [[ $response == *"ok"* ]]; then
+          echo "API is healthy"
+        else
+          echo "API health check failed"
+          exit 1
+        fi
+        
+    - name: Stop Docker container
+      run: docker stop tax-api

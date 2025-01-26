@@ -67,7 +67,7 @@ if __name__ == "__main__":
     # Read the data
     data_ingestion.read_data()
     logger.info("Data read successfully")
-
+ 
     # Preprocess the data
     X_train, X_test, X_inference, y_train, y_test, y_inference, preprocessor, val_size_number, inference_size_number = data_ingestion.preprocess_train()
     logger.info("Data preprocessed successfully")

@@ -74,3 +74,8 @@ def retrain(request: RetrainRequest):
     except Exception as e:
         logger.error(f"Error retraining model: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+    
+# health check
+@router.get("/health")
+def health_check():
+    return {"status": "ok"}
