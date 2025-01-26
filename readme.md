@@ -4,7 +4,7 @@
 ## Project Overview
 This project implements a machine learning solution to predict whether users will complete their tax filing based on their activity patterns, demographics, and platform engagement. The system is built as a production-ready API service with capabilities for real-time predictions and model retraining.
 
-You can test the API endpoints at:
+You can test the API endpoints (on any software like Postman) at:
 - Prediction: https://tax-prediction-api.onrender.com/predict
 - Retraining: https://tax-prediction-api.onrender.com/retrain
 - Health Check: https://tax-prediction-api.onrender.com/health
@@ -29,18 +29,17 @@ You can test the API endpoints at:
 
 ## Project Structure
 ```
-├── controllers/*  # API endpoints
-├── data/*  # Dataset files. 
+├── src         # contains the code of the application
+    ├── controllers/*  # API endpoints
+    ├── models/*  # data sctructure of the requests
+    ├── services/*  # business logic. functions that are called by the controllers
+    ├── utils/*  # utilities like data processing (ingestion), logger, analysis of the data
+    ├── train/*  # contains the training logic
+├── tests/*  # test cases    
+├── data/*  # Dataset files and output models
 ├── logs/*  # logs of the app
-├── models/*  # data sctructure of the requests
-├── output_models/*  # trained models and preprocessors
-├── services/*  # business logic. functions that are called by the controllers
-├── utils/*  # utilities like logger and analysis of the data
 ├──--------------------------- 
 ├── app.py # Main FastAPI application
-├── ingestion.py # Data ingestion/input and preprocessing
-├── test_case.py # Test cases for the API
-├── train.py # Model training script
 ```
 
 ## Installation & Setup
@@ -172,7 +171,7 @@ The project includes a GitHub Actions workflow that:
 .venv/bin/pytest -v
 ```
 
-### For running the app on local:
+### For running the app on local just FastAPI:
 ```bash
 uvicorn app:app --host 0.0.0.0 --port 8000
 ```

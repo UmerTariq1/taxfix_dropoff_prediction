@@ -2,15 +2,17 @@ import pytest
 from fastapi.testclient import TestClient
 import sys
 from pathlib import Path
+from app import app
+from src.services.prediction_service import load_model_and_preprocessor
+import pandas as pd
+import json
+
 
 # Add the project root to the Python path
 project_root = str(Path(__file__).parent.parent)
 sys.path.insert(0, project_root)
 
-from app import app
-from services.prediction_service import load_model_and_preprocessor
-import pandas as pd
-import json
+
 
 client = TestClient(app)
 

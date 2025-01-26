@@ -17,5 +17,5 @@ class RetrainRequest(BaseModel):
     data_path: str
     val_size: float = 0.2
     inference_size: float = 0.05
-    model_path: str = 'output_models/model.pkl'
-    preprocessor_path: str = 'output_models/preprocessor.pkl'
+    model_path: str = 'data/output_models/model.pkl'
+    preprocessor_path: str = 'data/output_models/preprocessor.pkl'

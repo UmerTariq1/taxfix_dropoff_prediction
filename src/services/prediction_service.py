@@ -1,15 +1,15 @@
 # services/prediction_service.py
 import joblib
 import pandas as pd
-from ingestion import DataIngestion
+from src.utils.ingestion import DataIngestion
 import os, asyncio
-from train import train_model, save_model
-from utils.custom_logger import app_logger as logger
+from src.train.train import train_model, save_model
+from src.utils.custom_logger import app_logger as logger
 
 model, preprocessor = None, None
 
 
-def load_model_and_preprocessor(model_path: str = 'output_models/model.pkl', preprocessor_path: str = 'output_models/preprocessor.pkl'):
+def load_model_and_preprocessor(model_path: str = 'data/output_models/model.pkl', preprocessor_path: str = 'data/output_models/preprocessor.pkl'):
     """Loads the trained model and preprocessor."""
 
     if not os.path.exists(model_path) or not os.path.exists(preprocessor_path):

@@ -1,8 +1,8 @@
-from ingestion import DataIngestion
+from src.utils.ingestion import DataIngestion
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
-from utils.custom_logger import app_logger as logger
+from src.utils.custom_logger import app_logger as logger
 import joblib, os
 
 

@@ -1,8 +1,8 @@
 # controllers/prediction_controller.py
 from fastapi import APIRouter, HTTPException, File, UploadFile
-from models.request_models import PredictionRequest, RetrainRequest
-from services.prediction_service import predict_single, retrain_model
-from utils.custom_logger import app_logger as logger, prediction_logger as pred_logger
+from src.models.request_models import PredictionRequest, RetrainRequest
+from src.services.prediction_service import predict_single, retrain_model
+from src.utils.custom_logger import app_logger as logger, prediction_logger as pred_logger
 import pandas as pd
 from pydantic import ValidationError
 import time, asyncio

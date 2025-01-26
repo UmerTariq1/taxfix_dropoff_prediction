@@ -1,11 +1,11 @@
 # app.py
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
-from controllers import prediction_controller
+from src.controllers import prediction_controller
 import joblib
 import os
-from services.prediction_service import load_model_and_preprocessor
-from utils.custom_logger import app_logger as logger
+from src.services.prediction_service import load_model_and_preprocessor
+from src.utils.custom_logger import app_logger as logger
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
