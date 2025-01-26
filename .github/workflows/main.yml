@@ -16,7 +16,11 @@ jobs:
     - name: Start API container
       run: |
         docker run -d -p 8000:8000 --name tax-api tax-prediction-api
-        sleep 10  # Wait for container to start
+        sleep 30  # Wait for container to start
+
+        # Check if container is running and show logs
+        docker ps
+        docker logs tax-api
         
     - name: Check API health
       run: |
