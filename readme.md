@@ -16,7 +16,7 @@ You can test the API endpoints at:
 - CI/CD pipeline with GitHub Actions
 - Automated testing suite
 - Dockerized application
-- Docker image hosted on Docker Hub
+- Docker image hosted on Docker Hub (accessable at : https://hub.docker.com/r/umertariq01/tax-prediction-api/)
 - Docker container hosted on render (accessable at : https://tax-prediction-api.onrender.com/) 
 
 ## Technical Stack
