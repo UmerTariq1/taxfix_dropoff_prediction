@@ -102,6 +102,6 @@ if __name__ == "__main__":
     logger.info("Model trained successfully")
 
     # Save the model
-    save_model(model, preprocessor, "model.pkl", "preprocessor.pkl")
+    print( save_model(model, preprocessor, "model.pkl", "preprocessor.pkl") ) 
 
     print("Model trained successfully")
