@@ -5,36 +5,20 @@ on:
     branches: [ main ]
 
 jobs:
-  test-and-build:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.9'
-    
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        
-    - name: Train model
-      run: python train.py
-        
-    - name: Run tests
-      run: pytest -v
 
     - name: Build Docker image
       run: docker build -t tax-prediction-api .
       
-    - name: Run Docker container
+    - name: Start API container
       run: |
         docker run -d -p 8000:8000 --name tax-api tax-prediction-api
         sleep 10  # Wait for container to start
         
-    - name: Test API health endpoint
+    - name: Check API health
       run: |
         response=$(curl -s http://localhost:8000/health)
         if [[ $response == *"ok"* ]]; then
@@ -43,6 +27,39 @@ jobs:
           echo "API health check failed"
           exit 1
         fi
+
+    - name: Train model via API
+      run: |
+        curl -X POST http://localhost:8000/retrain \
+          -H "Content-Type: application/json" \
+          -d '{
+            "data_path":"/app/data/dataset.csv"
+          }'
         
-    - name: Stop Docker container
+        # Wait for training to complete
+        sleep 15
+        
+    - name: Run tests in container
+      run: |
+        docker exec tax-api pytest -v
+        
+    - name: Test prediction endpoint
+      run: |
+        # Add a test prediction request here
+        curl -X POST http://localhost:8000/predict \
+          -H "Content-Type: application/json" \
+          -d '{
+              "age": 12,
+              "income": 75000.5,
+              "employment_type": "full_time",
+              "marital_status": "married",
+              "time_spent_on_platform": 210.5,
+              "number_of_sessions": 22,
+              "fields_filled_percentage": 95.2,
+              "previous_year_filing": 0,
+              "device_type": "desktop",
+              "referral_source": "organic_search"
+          }'
+        
+    - name: Cleanup
       run: docker stop tax-api
