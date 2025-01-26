@@ -55,6 +55,9 @@ def save_model(model, preprocessor, model_path, preprocessor_path):
     logger.info(f"Saving Model : Model saved to {model_path}")
     logger.info(f"Saving Model : Preprocessor saved to {preprocessor_path}")
 
+    # return the full path of the saved model
+    return model_path, preprocessor_path
+
 
 if __name__ == "__main__":
 
