@@ -77,7 +77,7 @@ docker rmi umertariq01/tax-prediction-api
 
 # Pull and run fresh version
 docker run -d -p 8000:8000 --name tax-predictor umertariq01/tax-prediction-api
-
+```
 
 
 
