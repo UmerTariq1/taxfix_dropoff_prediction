@@ -42,6 +42,45 @@ You can test the API endpoints (on any software like Postman) at:
 ├── app.py # Main FastAPI application
 ```
 
+## Quick Start with Docker Image
+Anyone can run this application locally using the pre-built Docker image:
+
+1. Make sure Docker is installed on your machine
+2. Pull the Docker image:
+```bash
+docker pull umertariq01/tax-prediction-api
+```
+3. Run the container:
+```bash
+docker run -d -p 8000:8000 --name tax-predictor umertariq01/tax-prediction-api
+```
+4. The API is now accessible at http://localhost:8000
+
+You can test the endpoints using:
+- Health check: `curl http://localhost:8000/health`
+- Prediction API: http://localhost:8000/predict (use Postman or similar tool)
+- Retraining API: http://localhost:8000/retrain
+
+To stop and remove the container:
+```bash
+docker stop tax-predictor
+docker rm tax-predictor
+```
+
+
+### Updating to the Latest Version
+If you've run this container before and want to ensure you have the newest version:
+```bash
+# Remove existing container and image
+docker rm -f tax-predictor || true
+docker rmi umertariq01/tax-prediction-api
+
+# Pull and run fresh version
+docker run -d -p 8000:8000 --name tax-predictor umertariq01/tax-prediction-api
+
+
+
+
 ## Installation & Setup
 
 ### Setup
@@ -66,6 +105,7 @@ uvicorn app:app --host 0.0.0.0 --port 8000
 docker build -t tax-prediction-api .
 docker run -d -p 8000:8000 --name test-container tax-prediction-api
 ```
+Note that this docker image/container cannot be pushed to render to be hosted as it is built on arm64 architecture.
 
 4. Do the health check:
 ```bash
@@ -209,11 +249,11 @@ cat /app/logs.log
 Since this application was developed on m1 machine, the docker architecture by default is arm64. 
 But if you want to push the image to docker hub and run it on render, you need to build the image on x86_64 architecture.
 ```bash
-docker build --platform linux/amd64 -t umertariq01/tax-prediction-api:v1 .
-docker inspect umertariq01/tax-prediction-api:v1 | grep Architecture
-docker tag umertariq01/tax-prediction-api:v1 umertariq01/tax-prediction-api:v1
-docker push umertariq01/tax-prediction-api:v1
+docker build --platform linux/amd64 -t umertariq01/tax-prediction-api .
+docker inspect umertariq01/tax-prediction-api | grep Architecture 
+docker push umertariq01/tax-prediction-api
 ```
+(the 2nd command confirms that the architecture is x86_64)
 This creates and uploades the docker image on docker hub. 
 Now you can use this image to create a container on render.
 That container can be accessed at: 
