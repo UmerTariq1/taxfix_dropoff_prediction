@@ -17,7 +17,7 @@ You can test the API endpoints (on any software like Postman) at:
 - Automated testing suite
 - Dockerized application
 - Docker image hosted on Docker Hub (accessable at : https://hub.docker.com/r/umertariq01/tax-prediction-api/)
-- Docker container hosted on render (accessable at : https://tax-prediction-api.onrender.com/) 
+- Docker container hosted on render (accessable at : https://tax-prediction-api.onrender.com/ , due to it being in the free tier, it might take some time to load the first time)
 
 ## Technical Stack
 - FastAPI for API development
@@ -218,4 +218,5 @@ This creates and uploades the docker image on docker hub.
 Now you can use this image to create a container on render.
 That container can be accessed at: 
 
-https://tax-prediction-api.onrender.com/
+https://tax-prediction-api.onrender.com/ 
+(this is just hosted url, so you can't access it from browser. Access it from postman or a similar software with an API endpoint)
