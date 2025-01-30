@@ -9,8 +9,9 @@ You can test the API endpoints (on any software like Postman) at:
 - Retraining: https://tax-prediction-api.onrender.com/retrain
 - Health Check: https://tax-prediction-api.onrender.com/health
 
-Note: Due to the docker container being hosted in the free tier on render, it might take some time to load the first time or might not be active at all due to inactivity. In that case, you can run the application locally using the instructions below or contact me to activate the docker container.
-
+Note: 
+1) Due to the docker container being hosted in the free tier on render, it might take some time to load the first time or might not be active at all due to inactivity. In that case, you can run the application locally using the instructions below or contact me to activate the docker container.
+2) For privacy and data security, the dataset files have been removed from the repository and are not included. Please use the provided instructions to load the dataset locally.
 
 ### Features
 - Real-time prediction API endpoint (with Asynchronous processing)
