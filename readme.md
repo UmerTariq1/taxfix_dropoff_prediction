@@ -9,6 +9,9 @@ You can test the API endpoints (on any software like Postman) at:
 - Retraining: https://tax-prediction-api.onrender.com/retrain
 - Health Check: https://tax-prediction-api.onrender.com/health
 
+Note: Due to the docker image being hosted in the free tier on render, it might take some time to load the first time or might not be active at all due to inactivity. In that case, you can run the application locally using the instructions below or contact me to activate the docker image.
+
+
 ### Features
 - Real-time prediction API endpoint (with Asynchronous processing)
 - Model retraining capability
@@ -17,7 +20,7 @@ You can test the API endpoints (on any software like Postman) at:
 - Automated testing suite
 - Dockerized application
 - Docker image hosted on Docker Hub (accessable at : https://hub.docker.com/r/umertariq01/tax-prediction-api/)
-- Docker container hosted on render (accessable at : https://tax-prediction-api.onrender.com/ , due to it being in the free tier, it might take some time to load the first time)
+- Docker container hosted on render (accessable at : https://tax-prediction-api.onrender.com/ )
 
 ## Technical Stack
 - FastAPI for API development
